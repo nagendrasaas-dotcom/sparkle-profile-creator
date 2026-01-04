@@ -1,35 +1,75 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { MapPin, Building2, CheckCircle, Clock, ArrowLeft } from 'lucide-react';
+import { MapPin, CheckCircle, Clock, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import project1 from '@/assets/project-1.jpg';
-import project2 from '@/assets/project-2.jpg';
-import project3 from '@/assets/project-3.jpg';
 import safety from '@/assets/safety.jpg';
+import chimney1 from '@/assets/chimney-1.jpg';
+import chimney2 from '@/assets/chimney-2.jpg';
+import chimney3 from '@/assets/chimney-3.jpg';
+import chimney4 from '@/assets/chimney-4.jpg';
+import nitrogen1 from '@/assets/nitrogen-1.jpg';
+import nitrogen2 from '@/assets/nitrogen-2.jpg';
+import nitrogen3 from '@/assets/nitrogen-3.jpg';
+import nitrogen4 from '@/assets/nitrogen-4.jpg';
 
+// 36 Ongoing Projects
 const ongoingProjects = [
   { description: 'Operation of Ore Beneficiation Plant 70,000 TPD (OBP-2)', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
   { description: 'Mechanical Maintenance of EOT Crane HSM2', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
   { description: 'Mechanical Maintenance of EOT Crane CRM2', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
   { description: 'Mechanical Maintenance of EOT Crane HSM3', site: 'JVML Toranagallu', location: 'Bellary, Karnataka' },
-  { description: 'Operation and Maintenance of OBP-III Wet Grinding Area', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
   { description: 'Manpower supply for Commando Group for JVML, JSW', site: 'JVML Toranagallu', location: 'Bellary, Karnataka' },
-];
-
-const completedProjects = [
+  { description: 'Manpower supply for the Safety Department JSW', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Operation and Maintenance of Ore Beneficiation Plant-III Wet Grinding Area', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Manpower supply for Central Maintenance Department (CMD) - Pellet Plant-III', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Operation and Maintenance of Slim Slurry Recovery Plant Beneficiation Plant', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Operation and Maintenance of Dedusting system at Coke Oven-3', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Operation and Maintenance of Dedusting system at Coke Oven-4', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Operation and Maintenance of Dedusting system at Coke Oven-5', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Compressor maintenance at OBP-1', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Filter cloth maintenance at OBP-1', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Operation and Maintenance of Dedusting system at SMS', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Pumps and Motor Installation at Blast Furnace Plant', site: 'JSW Toranagallu', location: 'Bellary, Karnataka' },
+  { description: 'Operation and Maintenance of Sinter Plant 1500 TPA', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Nitrogen Plant Installation and Commissioning', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Operation and Maintenance of PCI Plant', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Commissioning of PCI Plant', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Maintenance of Power Plant 40 MW', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Linner plate Fixing work at Coke Oven Plant', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Pusher car and Charging car refurbishment at Coke Oven', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Chimney Fabrication and Erection work 50 ft', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Operation and Maintenance of Sinter Plant 1500 TPA', site: 'KIRLOSKAR, Hiriyur', location: 'Chitradurga, Karnataka' },
+  { description: 'Capital shutdown work at MBF 1', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Capital shutdown work at MBF 2', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Capital shutdown work at Sinter Plant', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Pipe Line Fabrication and Erection of Blast Furnace Project', site: 'BMM ISPATH, Hospete', location: 'Hospete, Karnataka' },
+  { description: 'Chimney Fabrication and Erection work 50 ft', site: 'BMM ISPATH, Hospete', location: 'Hospete, Karnataka' },
   { description: 'Oxygen Plant Erection and Installation', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
   { description: 'Crusher Installation and Commissioning', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
   { description: 'Nitrogen Plant Erection and Installation', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
-  { description: 'Chimney Fabrication and Erection work 50\'', site: 'BMM ISPATH, Hospete', location: 'Hospete, Karnataka' },
-  { description: 'Operation and Maintenance of Sinter Plant 1500 TPA', site: 'KIRLOSKAR, Hiriyur', location: 'Chitradurga, Karnataka' },
-  { description: 'Capital shutdown work at MBF 1 & MBF 2', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Dedusting Unit Installation and Commissioning', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Pipe Line Fabrication and Erection of Blast Furnace Project', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Equipment Erection and Alignment Services', site: 'Multiple Sites', location: 'Karnataka' },
 ];
 
-const projectGallery = [
-  { src: project1, title: 'Chimney Fabrication & Erection', description: 'Steel chimney fabrication and erection work at BMM ISPATH, Hospete' },
-  { src: project2, title: 'Industrial Plant Erection', description: 'Heavy industrial equipment erection and installation services' },
-  { src: project3, title: 'Nitrogen Plant Installation', description: 'Complete nitrogen plant erection and commissioning at KIRLOSKAR, Koppal' },
-  { src: safety, title: 'Safety First Initiative', description: 'Our commitment to workplace safety - Safety pledge ceremony' },
+// 16 Completed Projects
+const completedProjects = [
+  { description: 'Pumps and Motor Installation at Blast Furnace Plant', site: 'BMM ISPATH, Hospete', location: 'Hospete, Karnataka' },
+  { description: 'Commissioning of PCI Plant', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Dedusting Unit Installation and Commissioning', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Pipe Line Fabrication and Erection of Blast Furnace Project', site: 'BMM ISPATH, Hospete', location: 'Hospete, Karnataka' },
+  { description: 'Chimney Fabrication and Erection work 50 ft', site: 'BMM ISPATH, Hospete', location: 'Hospete, Karnataka' },
+  { description: 'Oxygen Plant Erection and Installation', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Crusher Installation and Commissioning', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Nitrogen Plant Erection and Installation', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Nitrogen Plant Installation and Commissioning', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Linner plate Fixing work at Coke Oven Plant', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Pusher car and Charging car refurbishment at Coke Oven', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Chimney Fabrication and Erection work 50 ft', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Operation and Maintenance of Sinter Plant 1500 TPA', site: 'KIRLOSKAR, Hiriyur', location: 'Chitradurga, Karnataka' },
+  { description: 'Capital shutdown work at MBF 1', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Capital shutdown work at MBF 2', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
+  { description: 'Capital shutdown work at Sinter Plant', site: 'KIRLOSKAR, Koppal', location: 'Koppal, Karnataka' },
 ];
 
 const Projects = () => {
@@ -49,42 +89,126 @@ const Projects = () => {
             Successfully executing major industrial projects across Karnataka and beyond. 
             From plant operations to complex fabrication and erection works.
           </p>
-        </div>
-      </section>
-
-      {/* Project Gallery */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="section-title-center mb-12">Project Gallery</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {projectGallery.map((img, index) => (
-              <div key={index} className="group bg-card rounded-xl shadow-lg overflow-hidden">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={img.src}
-                    alt={img.title}
-                    className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-heading font-bold text-xl text-foreground mb-2">{img.title}</h3>
-                  <p className="text-muted-foreground">{img.description}</p>
-                </div>
-              </div>
-            ))}
+          <div className="flex gap-8 mt-8">
+            <div className="text-center">
+              <p className="text-4xl font-bold text-accent">36+</p>
+              <p className="text-sm text-primary-foreground/70">Ongoing Projects</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-accent">16+</p>
+              <p className="text-sm text-primary-foreground/70">Completed Projects</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Ongoing Projects */}
+      {/* Featured Project: Chimney Fabrication & Erection */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="section-title-center mb-8">Chimney Fabrication & Erection</h2>
+          <div className="max-w-4xl mx-auto mb-8">
+            <p className="text-muted-foreground text-center text-lg">
+              Our team specializes in the complete fabrication and erection of industrial chimneys up to 50 feet in height. 
+              This project at BMM ISPATH, Hospete showcases our expertise in steel plate rolling, precision welding, 
+              structural assembly, and safe erection using specialized lifting equipment. The chimney serves as a critical 
+              component for exhaust gas dispersion in the blast furnace operations.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img src={chimney1} alt="Chimney Fabrication - Base Assembly" className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="p-4 text-primary-foreground text-sm">Base Assembly</p>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img src={chimney2} alt="Chimney Fabrication - Welding Work" className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="p-4 text-primary-foreground text-sm">Welding Work</p>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img src={chimney3} alt="Chimney Erection - Lifting" className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="p-4 text-primary-foreground text-sm">Erection Process</p>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img src={chimney4} alt="Chimney - Final Installation" className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="p-4 text-primary-foreground text-sm">Final Installation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Project: Nitrogen Plant Erection */}
+      <section className="py-16 bg-gradient-section">
+        <div className="container mx-auto px-4">
+          <h2 className="section-title-center mb-8">Nitrogen Plant Erection & Installation</h2>
+          <div className="max-w-4xl mx-auto mb-8">
+            <p className="text-muted-foreground text-center text-lg">
+              Complete erection and installation of nitrogen generation plant at KIRLOSKAR, Koppal. This project involved 
+              installation of cryogenic separation units, compressors, storage tanks, and associated piping systems. 
+              Our team handled the precision alignment of rotating equipment, electrical connections, and successful 
+              commissioning to achieve specified nitrogen purity levels for steel making operations.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img src={nitrogen1} alt="Nitrogen Plant - Equipment Setup" className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-accent/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="p-4 text-accent-foreground text-sm">Equipment Setup</p>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img src={nitrogen2} alt="Nitrogen Plant - Piping Work" className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-accent/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="p-4 text-accent-foreground text-sm">Piping Installation</p>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img src={nitrogen3} alt="Nitrogen Plant - Assembly" className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-accent/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="p-4 text-accent-foreground text-sm">Plant Assembly</p>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden rounded-lg shadow-lg">
+              <img src={nitrogen4} alt="Nitrogen Plant - Commissioning" className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-accent/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <p className="p-4 text-accent-foreground text-sm">Commissioning</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Safety Gallery */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="section-title-center mb-8">Safety First Initiative</h2>
+          <div className="max-w-4xl mx-auto text-center">
+            <img src={safety} alt="Safety Pledge Ceremony" className="w-full max-w-2xl mx-auto rounded-xl shadow-lg mb-6" />
+            <p className="text-muted-foreground text-lg">
+              Our commitment to workplace safety is demonstrated through regular safety pledge ceremonies, 
+              toolbox talks, and strict adherence to PPE protocols across all project sites.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Ongoing Projects - Full List */}
       <section className="py-16 bg-gradient-section">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-3 mb-8">
             <div className="bg-primary p-3 rounded-full">
               <Clock className="w-6 h-6 text-primary-foreground" />
             </div>
-            <h2 className="font-heading font-bold text-3xl text-foreground">Ongoing Projects</h2>
+            <div>
+              <h2 className="font-heading font-bold text-3xl text-foreground">Ongoing Projects</h2>
+              <p className="text-muted-foreground">36 Active Projects</p>
+            </div>
           </div>
           
           <div className="bg-card rounded-xl shadow-lg overflow-hidden">
@@ -92,7 +216,7 @@ const Projects = () => {
               <table className="w-full">
                 <thead className="bg-primary text-primary-foreground">
                   <tr>
-                    <th className="text-left p-4 font-semibold">#</th>
+                    <th className="text-left p-4 font-semibold w-12">#</th>
                     <th className="text-left p-4 font-semibold">Project Description</th>
                     <th className="text-left p-4 font-semibold">Client / Site</th>
                     <th className="text-left p-4 font-semibold">Location</th>
@@ -106,7 +230,7 @@ const Projects = () => {
                       <td className="p-4 font-medium text-primary">{project.site}</td>
                       <td className="p-4">
                         <span className="flex items-center gap-1 text-muted-foreground">
-                          <MapPin className="w-4 h-4" />
+                          <MapPin className="w-4 h-4 flex-shrink-0" />
                           {project.location}
                         </span>
                       </td>
@@ -119,14 +243,17 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Completed Projects */}
+      {/* Completed Projects - Full List */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-3 mb-8">
             <div className="bg-accent p-3 rounded-full">
               <CheckCircle className="w-6 h-6 text-accent-foreground" />
             </div>
-            <h2 className="font-heading font-bold text-3xl text-foreground">Completed Projects</h2>
+            <div>
+              <h2 className="font-heading font-bold text-3xl text-foreground">Completed Projects</h2>
+              <p className="text-muted-foreground">16 Successfully Delivered Projects</p>
+            </div>
           </div>
           
           <div className="bg-card rounded-xl shadow-lg overflow-hidden">
@@ -134,7 +261,7 @@ const Projects = () => {
               <table className="w-full">
                 <thead className="bg-accent text-accent-foreground">
                   <tr>
-                    <th className="text-left p-4 font-semibold">#</th>
+                    <th className="text-left p-4 font-semibold w-12">#</th>
                     <th className="text-left p-4 font-semibold">Project Description</th>
                     <th className="text-left p-4 font-semibold">Client / Site</th>
                     <th className="text-left p-4 font-semibold">Location</th>
@@ -148,7 +275,7 @@ const Projects = () => {
                       <td className="p-4 font-medium text-accent">{project.site}</td>
                       <td className="p-4">
                         <span className="flex items-center gap-1 text-muted-foreground">
-                          <MapPin className="w-4 h-4" />
+                          <MapPin className="w-4 h-4 flex-shrink-0" />
                           {project.location}
                         </span>
                       </td>
