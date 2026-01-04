@@ -1,4 +1,5 @@
-import { MapPin, Building2 } from 'lucide-react';
+import { MapPin, Building2, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import project1 from '@/assets/project-1.jpg';
 import project2 from '@/assets/project-2.jpg';
 import project3 from '@/assets/project-3.jpg';
@@ -38,6 +39,12 @@ export const ProjectsSection = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto mt-6">
             Successfully executing major industrial projects across Karnataka and beyond
           </p>
+          <Link 
+            to="/projects" 
+            className="inline-flex items-center gap-2 mt-4 text-accent font-semibold hover:underline"
+          >
+            View All Projects <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         {/* Project Gallery */}

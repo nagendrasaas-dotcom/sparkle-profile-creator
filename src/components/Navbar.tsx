@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail } from 'lucide-react';
-import logo from '@/assets/logo.jpg';
+import { Link, useLocation } from 'react-router-dom';
+import logo from '@/assets/logo.png';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Clients', href: '#clients' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/#home', isRoute: false },
+  { label: 'About Us', href: '/#about', isRoute: false },
+  { label: 'Services', href: '/#services', isRoute: false },
+  { label: 'Projects', href: '/projects', isRoute: true },
+  { label: 'Clients', href: '/#clients', isRoute: false },
+  { label: 'Contact', href: '/#contact', isRoute: false },
 ];
 
 export const Navbar = () => {
@@ -67,13 +68,23 @@ export const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="navbar-link"
-                >
-                  {link.label}
-                </a>
+                link.isRoute ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className="navbar-link"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="navbar-link"
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
             </div>
 
@@ -93,14 +104,25 @@ export const Navbar = () => {
           <div className="lg:hidden bg-card border-t border-border">
             <div className="container mx-auto px-4 py-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="block py-3 text-foreground hover:text-accent transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </a>
+                link.isRoute ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className="block py-3 text-foreground hover:text-accent transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="block py-3 text-foreground hover:text-accent transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
               <div className="mt-4 pt-4 border-t border-border space-y-2">
                 <a href="mailto:aashirvadplant@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground">
